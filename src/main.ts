@@ -12,20 +12,20 @@ async function bootstrap() {
   // Enable validation
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, // Remove non-whitelisted properties
-      forbidNonWhitelisted: true, // Throw errors if non-whitelisted values are provided
-      transform: true, // Transform payloads to be objects typed according to their DTO classes
+      whitelist: true, // Remove propriedades não decoradas
+      forbidNonWhitelisted: false, // Permite propriedades extras
+      transform: true, // Transforma o payload para corresponder aos DTOs
     }),
   );
 
   const config = new DocumentBuilder()
     .setTitle('Jornal API')
-    .setDescription('The jornal API description')
+    .setDescription('API para o jornal')
     .setVersion('1.0')
-    .addTag('jornal')
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory);
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT ?? 3001);
 }
