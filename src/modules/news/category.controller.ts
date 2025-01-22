@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
-import { CreateCategoryDto } from './dto/create-category.dto';
+import { CreateCategoryDto } from './dto/category.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('categories')
