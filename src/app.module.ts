@@ -3,8 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { NewsModule } from './modules/news/news.module';
 import { FeaturedModule } from './modules/featured/featured.module';
+import { AppController } from './app.controller';
 
 @Module({
+  controllers: [AppController],
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
